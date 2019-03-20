@@ -111,20 +111,27 @@ void Input(void)
 	
 	if( GetAsyncKeyState(0x53) & 0x8000 ) //'s':backward
 	{
-		if(planepos_y < height - speedup - 1)planepos_y += (speedup + 1);
-		else if(planepos_y < height - 2)planepos_y++;		
+		if(planepos_y < height - speedup - 1)
+			planepos_y += (speedup + 1);
+		else if(planepos_y < height - 2)
+			planepos_y++;
 	}
 	
 	if( GetAsyncKeyState(0x41) & 0x8000 ) //'a':left
 	{ 
-		if(planepos_x > speedup + 1)planepos_x -= (speedup + 1);
-		else if(planepos_x > 2)planepos_x--;//this idedtifaction prevents the plane leap up of sight when speedup is high
+		if(planepos_x > speedup + 1)
+			planepos_x -= (speedup + 1);
+		else if(planepos_x > 2)
+			planepos_x--;
+			//this idedtifaction prevents the plane leap up of sight when speedup is high
 	}
 			
 	if( GetAsyncKeyState(0x44) & 0x8000 ) //'d':right 
 	{
-		if(planepos_x < width - speedup - 1)planepos_x += (speedup + 1);
-			else if(planepos_x < width -2)planepos_x++;
+		if(planepos_x < width - speedup - 1)
+			planepos_x += (speedup + 1);
+		else if(planepos_x < width -2)
+			planepos_x++;
 	}
 	
 	if( GetAsyncKeyState(0x20) & 0x8000 ) //space:fire of the battleplane
@@ -138,7 +145,7 @@ void Input(void)
 	{
 		switch(Pausegame(width,height))
 		{
-			case 2£º
+			case 2:
 				goto L3;
 				break;
 			
@@ -150,6 +157,7 @@ void Input(void)
 				goto L1;
 				break;
 		}
+	}	
 }
 
 void Dataops(void)
@@ -289,7 +297,7 @@ void Fire()
 			{
 				while (1) 
 				{
-					if (bullet[u[v]][4] == width + 5 && bullet[u[v][5] == height + 5) 
+					if (bullet[u[v]][4] == width + 5 && bullet[u[v]][5] == height + 5)
 					{
 						bullet[u[v]][5] = BPLpos_y - 1;
 						bullet[u[v]][4] = BPLpos_x - firepower + 1 + 2 * v;
@@ -303,28 +311,28 @@ void Fire()
 			}
 		
 			firestate = 0;
-		}
 	}
 	
+	
 	else if (firemod == 1) //use laser to attack
-		{
-			if(firepower == 1 || firepower == 2)
-			    laser[1] = 1;
+	{
+		if(firepower == 1 || firepower == 2)
+			laser[1] = 1;
 			    
-			if(firepower == 3)
-			{
-				laser[0] = 1;
-				laser[2] = 1;
-			}
+		if(firepower == 3)
+		{
+			laser[0] = 1;
+			laser[2] = 1;
+		}
 			
-			if(firepower == 4)
-			{
-				laser[0] = 1;
-				laser[1] = 1;
-				laser[2] = 1;
-			}
+		if(firepower == 4)
+		{
+			laser[0] = 1;
+			laser[1] = 1;
+			laser[2] = 1;
+		}
 
-		}	
+	}	
 }
 
 void Bombset(void)
